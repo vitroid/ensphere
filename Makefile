@@ -11,6 +11,9 @@ uninstall:
 pypi: README.md
 	./setup.py check
 	./setup.py sdist bdist_wheel upload
+build.:
+	-rm -rf build
+	python setup.py build_ext #--inplace
 distclean:
 	-rm -rf build dist
 	-rm -rf ensphere.egg-info
