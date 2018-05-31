@@ -7,7 +7,7 @@ import re
 
 #Copied from wheel package
 here = os.path.abspath(os.path.dirname(__file__))
-with codecs.open(os.path.join(os.path.dirname(__file__), 'ensphere.py'),
+with codecs.open(os.path.join(os.path.dirname(__file__), 'ensphere', '__init__.py'),
                  encoding='utf8') as version_file:
     metadata = dict(re.findall(r"""__([a-z]+)__ = "([^"]+)""", version_file.read()))
 
@@ -30,10 +30,10 @@ setup(name='ensphere',
       keywords=['ensphere','panorama', 'equirectangular', 'photosphere'],
       license='MIT',
       packages=['ensphere'],
-      install_requires=['PIL', 'python-xmp-toolkit'],
+      install_requires=['python-xmp-toolkit'],
       entry_points = {
               'console_scripts': [
-                  'ensphere = ensphere:main'
+                  'ensphere = ensphere.__main__:main'
               ]
           }
       )

@@ -2,12 +2,11 @@
 
 # wants python-xmp-toolkit, PIL
 # brew install exempi
-from PIL import Image
+import imagesize
 from libxmp import XMPFiles, consts
 import argparse  as ap
 import logging
-
-__version__ = "0.1"
+from ensphere import __version__
 
 GPano="http://ns.google.com/photos/1.0/panorama/"
 namespace=["UsePanoramaViewer",
@@ -34,7 +33,7 @@ namespace=["UsePanoramaViewer",
 "InitialCameraDolly",]
 
 def getoptions():
-    parser = ap.ArgumentParser(description='Add XMP metadata for PanoSphere in the pictures. (version {0})'.format(__version__), prog='test')
+    parser = ap.ArgumentParser(description='Add XMP metadata for PanoSphere in the pictures. (version {0})'.format(__version__), prog='ensphere')
     parser.add_argument('--version', '-V', action='version', version='%(prog)s {0}'.format(__version__))
     parser.add_argument('--set', '-s', nargs = 1, dest='vars', metavar='UsePanoramaViewer=True,ProjectionType=equirectangular', default=[], help="Set metadata for PanSpheres. Available variables: {0}".format(namespace))
     parser.add_argument('filenames', nargs='+',
@@ -70,8 +69,7 @@ def main():
             continue
         xmp.register_namespace(GPano, 'GPano')
 
-        im = Image.open(filename)
-        width, height = im.size
+        width, height = imagesize.get(filename)
         width  = "{0}".format(width)
         height = "{0}".format(height)
         # width  = xmp.get_property(consts.XMP_NS_EXIF, 'PixelXDimension' )
