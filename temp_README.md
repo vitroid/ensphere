@@ -2,6 +2,14 @@
 
 Add XMP info for PanoSphere in the pictures.
 
+## Requirements
+
+Install `exempi` in advance.
+
+On MacOS,
+
+    brew install exempi
+
 ## Usage
 
 %%usage%%

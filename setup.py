@@ -30,7 +30,7 @@ setup(name='ensphere',
       keywords=['ensphere','panorama', 'equirectangular', 'photosphere'],
       license='MIT',
       packages=['ensphere'],
-      install_requires=['python-xmp-toolkit'],
+      install_requires=['python-xmp-toolkit', 'imagesize'],
       entry_points = {
               'console_scripts': [
                   'ensphere = ensphere.__main__:main'
