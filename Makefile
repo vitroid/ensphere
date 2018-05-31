@@ -8,13 +8,12 @@ install: README.md
 	./setup.py install
 uninstall:
 	-pip uninstall -y ensphere
-pypi:
+pypi: README.md
 	./setup.py check
 	./setup.py sdist bdist_wheel upload
 distclean:
 	-rm -rf build dist
 	-rm -rf ensphere.egg-info
-	-rm README.md
 	-rm .DS_Store
 	find . -name __pycache__ | xargs rm -rf 
 	find . -name \*.pyc      | xargs rm -rf
